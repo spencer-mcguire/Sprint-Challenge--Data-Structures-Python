@@ -18,9 +18,11 @@ class RingBuffer:
         # remove the head and add to the tail
         # need to check if the start of the ring is at the head
         # if it is, set the start of the ring to the tail
-        if self.storage.length == self.current:
+        elif self.storage.length == self.capacity:
             head = self.storage.head
+            # remove the head
             self.storage.remove_from_head()
+
             self.storage.add_to_tail(item)
             if head == self.current:
                 self.current = self.storage.tail
